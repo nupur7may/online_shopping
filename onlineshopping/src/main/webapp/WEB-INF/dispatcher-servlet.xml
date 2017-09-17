@@ -1,0 +1,31 @@
+<!-- The context element is used to where the other controllers are, so you specify the base package -->
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = 
+   "http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       ">   
+    
+    
+    <context:component-scan base-package="net.nrp.onlineshopping.controller"></context:component-scan>
+    
+    <bean id="viewResolver"
+    	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="prefix" value="/WEB-INF/views/" />
+    	<property name="suffix" value=".jsp"/>
+    
+    </bean>
+    
+    <!-- Loading Static Resources -->
+    <mvc:annotation-driven/>
+    <!--  The Location of Static resources, ** indicates that the resources directory specifies all css,js.fonts etc.  -->
+      <mvc:resources location="/assets/" mapping="/resources/**"/> 
+    
+</beans>
