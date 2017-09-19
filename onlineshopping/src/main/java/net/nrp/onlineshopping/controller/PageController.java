@@ -2,55 +2,54 @@
  * It will generate Data (Greetings) and Logical View name
  * */
 
-
 package net.nrp.onlineshopping.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+@Controller	// controller
 
-@Controller   //controller
-public class PageController  //Handler Mapper that will help to resolve the request based on the url i.e mentioned in the RequestMapping annotation
+//Handler Mapper that will help to resolve the
+// request based on the url i.e mentioned in the
+// RequestMapping annotation
+public class PageController 
 {
-	
-	@RequestMapping(value={"/", "/home", "/index"})  //Specify multple URLs
-	
-	//Model and View is the class that will have Model as well the View name
-	public ModelAndView index(){
-		
+
+	@RequestMapping(value = {"/","/home","/index" })
+	// Specify multiple URLs
+	// Model and View is the class that will have Model as well the View name
+	public ModelAndView index() {
+
 		// Create an object for ModelAndView
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greeting", "Welcome to Spring Web MVC!");
-		
-		return mv;		
-		}
-	
-//	@RequestMapping(value="/test")
-//	public ModelAndView test(@RequestParam(value="greeting", required=false)String greeting){ //this does not make is mandatory to specify the greeting message in the url, if nothing is mentioned it will display the default 
-//		
-//		if (greeting == null) {
-//			
-//			greeting ="hello there"; // the default display greeting, when url does not mention what is value of greeting
-//		}
-//		ModelAndView mv = new ModelAndView("page");
-//		mv.addObject("greeting", greeting);
-//		
-//		return mv;
-//		
-//	}
-//	@RequestMapping(value="/test/{greeting}")   // greeting in curly brackets indicate that it's value is dynamic
-//	public ModelAndView test(@PathVariable("greeting")String greeting)     //this does not make is mandatory to specify the greeting message in the url, if nothing is mentioned it will display the default 
-//	{
-//		if (greeting == null) {
-//			
-//			greeting ="hello there"; // the default display greeting, when url does not mention what is value of greeting
-//		}
-//		ModelAndView mv = new ModelAndView("page");
-//		mv.addObject("greeting", greeting);
-//		
-//		return mv;
-//		
-//	}
+		mv.addObject("title", "Home");
+		mv.addObject("userClickHome", true);
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/about")
+	// Model and View is the class that will have Model as well the View name
+	public ModelAndView about() {
+
+		// Create an object for ModelAndView
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "About Us");
+		mv.addObject("userClickAbout", true);
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/contact")
+	// Model and View is the class that will have Model as well the View name
+	public ModelAndView contact() {
+
+		// Create an object for ModelAndView
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Contact Us");
+		mv.addObject("userClickContact", true);
+
+		return mv;
+	}
 }
